@@ -1,0 +1,9 @@
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\bin\Debug\Genetic_Algorythm.exe
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\bin\Debug\Genetic_Algorythm.pdb
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\obj\Debug\Genetic_Algorythm.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\obj\Debug\Genetic_Algorythm.Form1.resources
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\obj\Debug\Genetic_Algorythm.Form2.resources
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\obj\Debug\Genetic_Algorythm.Properties.Resources.resources
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\obj\Debug\Genetic_Algorythm.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\obj\Debug\Genetic_Algorythm.exe
+c:\users\user\documents\visual studio 2012\Projects\Genetic_Algorythm\Genetic_Algorythm\obj\Debug\Genetic_Algorythm.pdb
