@@ -49,7 +49,7 @@ namespace Genetic_Algorythm
 
         private void maskedTextBox1_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
+            if (comboBox1.Text != "" && maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
             {
                 button1.Enabled = true;
             }
@@ -57,7 +57,7 @@ namespace Genetic_Algorythm
 
         private void maskedTextBox2_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
+            if (comboBox1.Text != "" && maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
             {
                 button1.Enabled = true;
             }
@@ -65,7 +65,7 @@ namespace Genetic_Algorythm
 
         private void maskedTextBox3_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
+            if (comboBox1.Text != "" && maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
             {
                 button1.Enabled = true;
             }
@@ -73,7 +73,7 @@ namespace Genetic_Algorythm
 
         private void maskedTextBox4_TextChanged(object sender, EventArgs e)
         {
-            if (maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
+            if (comboBox1.Text != "" && maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
             {
                 button1.Enabled = true;
             }
@@ -237,6 +237,7 @@ namespace Genetic_Algorythm
         private void button2_Click(object sender, EventArgs e)
         {
             label17.Text = currentGeneration.ToString();
+            label10.Text = "Current generation:";
             for (int i = 0; i < numberOfItems; i++)
             {
                 for (int j = 0; j < populationSize; j++)
@@ -301,6 +302,7 @@ namespace Genetic_Algorythm
             currentGeneration++;
             if (currentGeneration > numberOfGenerations)
             {
+                label10.Text = "Final population:";
                 button2.Visible = !button2.Visible;
                 button3.Visible = !button3.Visible;
                 button4.Visible = !button4.Visible;
@@ -563,6 +565,14 @@ namespace Genetic_Algorythm
             maskedTextBox4.Visible = !maskedTextBox4.Visible;
             button1.Visible = !button1.Visible;
             button4.Visible = !button4.Visible;
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text != "" && maskedTextBox1.Text != "" && maskedTextBox2.Text != "" && maskedTextBox3.Text != "" && maskedTextBox4.Text != "")
+            {
+                button1.Enabled = true;
+            }
         }
     }
 }
