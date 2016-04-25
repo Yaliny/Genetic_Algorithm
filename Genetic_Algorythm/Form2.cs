@@ -319,6 +319,7 @@ namespace Genetic_Algorythm
                     probabilityDiapason[i, j] = 0;
                 }
             }
+            double percent = 0.00;
             int sumFitness = 0;
             for (int i = 0; i < populationSize; i++)
             {
@@ -328,7 +329,9 @@ namespace Genetic_Algorythm
             for (int i = 0; i < populationSize; i++)
             {
                 if (sumOfWeights[i] <= capacity)
-                    selectionProbability[i] = Convert.ToInt32(Math.Round(Convert.ToDouble(fitness[i]) / Convert.ToDouble(sumFitness)));
+                {
+                    selectionProbability[i] = 100 * fitness[i] / sumFitness;
+                }
                 else
                     selectionProbability[i] = 0;
             }
