@@ -91,9 +91,9 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.Location = new System.Drawing.Point(321, 155);
-            this.maskedTextBox1.Mask = "00";
+            this.maskedTextBox1.Mask = "000000";
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(41, 20);
+            this.maskedTextBox1.Size = new System.Drawing.Size(42, 20);
             this.maskedTextBox1.TabIndex = 2;
             this.maskedTextBox1.TextChanged += new System.EventHandler(this.maskedTextBox1_TextChanged);
             // 
@@ -120,7 +120,7 @@
             // maskedTextBox2
             // 
             this.maskedTextBox2.Location = new System.Drawing.Point(321, 200);
-            this.maskedTextBox2.Mask = "00";
+            this.maskedTextBox2.Mask = "00000";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBox2.TabIndex = 4;

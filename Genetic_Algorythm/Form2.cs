@@ -535,10 +535,10 @@ namespace Genetic_Algorythm
        newPopulation[i,j] = false;
     }
 }
-           maskedTextBox1.Clear();
-           maskedTextBox2.Clear();
-           maskedTextBox3.Clear();
-           maskedTextBox4.Clear();
+           //maskedTextBox1.Clear();
+           //maskedTextBox2.Clear();
+           //maskedTextBox3.Clear();
+           //maskedTextBox4.Clear();
             //Switching the controls' visibility
             dataGridView1.Visible = !dataGridView1.Visible;
             dataGridView2.Visible = !dataGridView2.Visible;
