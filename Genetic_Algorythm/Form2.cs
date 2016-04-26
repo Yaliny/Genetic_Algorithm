@@ -122,25 +122,30 @@ namespace Genetic_Algorythm
             }
 
             //Displaying the population in the data grid
-            dataGridView1.ColumnCount = numberOfItems;
-            dataGridView1.RowCount = populationSize;
-            int rowNumber = 1;
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            if (populationSize < 100)
             {
-                if (row.IsNewRow) continue;
-                row.HeaderCell.Value = "Chromosome " + rowNumber;
-                rowNumber = rowNumber + 1;
-            }
-            for (int i = 0; i < numberOfItems; i++)
-            {
-                for (int j = 0; j < populationSize; j++)
+                dataGridView1.ColumnCount = numberOfItems;
+                dataGridView1.RowCount = populationSize;
+                int rowNumber = 1;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (!population[i,j])
-                    {dataGridView1[i, j].Value = 0;}
-                    else
-                    { dataGridView1[i, j].Value = 1; }
+                    if (row.IsNewRow) continue;
+                    row.HeaderCell.Value = "Chromosome " + rowNumber;
+                    rowNumber = rowNumber + 1;
+                }
+                for (int i = 0; i < numberOfItems; i++)
+                {
+                    for (int j = 0; j < populationSize; j++)
+                    {
+                        if (!population[i, j])
+                        { dataGridView1[i, j].Value = 0; }
+                        else
+                        { dataGridView1[i, j].Value = 1; }
+                    }
                 }
             }
+            else
+                richTextBox1.Visible = true;
 
             //Displaying the item set in the data grid
             dataGridView2.ColumnCount = numberOfItems;
@@ -236,8 +241,8 @@ namespace Genetic_Algorythm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            label17.Text = currentGeneration.ToString();
-            label10.Text = "Current generation:";
+            label17.Text = (currentGeneration + 1).ToString();
+            label10.Text = "Current population:";
             for (int i = 0; i < numberOfItems; i++)
             {
                 for (int j = 0; j < populationSize; j++)
@@ -286,17 +291,22 @@ namespace Genetic_Algorythm
                     population[i,j] = newPopulation[i, j];
                 }
             }
-            for (int i = 0; i < numberOfItems; i++)
+            if (populationSize < 100)
             {
-                for (int j = 0; j < populationSize; j++)
+                for (int i = 0; i < numberOfItems; i++)
                 {
-                    if (!population[i, j])
-                    { dataGridView1[i, j].Value = 0; }
-                    else
-                    { dataGridView1[i, j].Value = 1; }
+                    for (int j = 0; j < populationSize; j++)
+                    {
+                        if (!population[i, j])
+                        { dataGridView1[i, j].Value = 0; }
+                        else
+                        { dataGridView1[i, j].Value = 1; }
+                    }
                 }
             }
+
             calculateFitness();
+            
             label15.Text = "Chromosome " + (bestSolutionIndex + 1) + ", value: " + bestSolutionValue + ", weight: " + bestSolutionWeight + ", " + bestSolutionQuantity + " items taken.";
             label14.Text = "Chromosome " + (bestFitnessIndex + 1) + ", value: " + bestFitnessValue + ", weight: " + bestFitnessWeight + ", " + bestFitnessQuantity + " items taken.";
             currentGeneration++;
@@ -316,10 +326,9 @@ namespace Genetic_Algorythm
                 selectionProbability[i] = 0;
                 for (int j = 0; j < 2; j++)
                 {
-                    probabilityDiapason[i, j] = 0;
+                    probabilityDiapason[i, j] = 0; //With this value the probability diapason of this chromosome will contain only 1 number of 100 (1%)
                 }
             }
-            double percent = 0.00;
             int sumFitness = 0;
             for (int i = 0; i < populationSize; i++)
             {
@@ -330,7 +339,7 @@ namespace Genetic_Algorythm
             {
                 if (sumOfWeights[i] <= capacity)
                 {
-                    selectionProbability[i] = 100 * fitness[i] / sumFitness;
+                    selectionProbability[i] = 100 * fitness[i] / sumFitness; //Calculating the percentage of current fitness function in sum of all the fitness functions
                 }
                 else
                     selectionProbability[i] = 0;
@@ -436,7 +445,9 @@ namespace Genetic_Algorythm
                     newPopulation[i, currentChromosome] = population[i, bestSolutionIndex];
                 }
                 currentChromosome++;
+
                 probabilityCalculation();
+
                 Random rnd = new Random();
                 while (currentChromosome < populationSize)
                 {
@@ -461,7 +472,9 @@ namespace Genetic_Algorythm
                         }
                     }
                 }
+
                 mutation();
+
                 for (int i = 0; i < numberOfItems; i++)
                 {
                     for (int j = 0; j < populationSize; j++)
@@ -474,14 +487,18 @@ namespace Genetic_Algorythm
                 currentGeneration++;
             }
             label17.Text = (currentGeneration - 1).ToString();
-            for (int i = 0; i < numberOfItems; i++)
+            if (populationSize < 100)
             {
-                for (int j = 0; j < populationSize; j++)
+                label10.Text = "Final population:";
+                for (int i = 0; i < numberOfItems; i++)
                 {
-                    if (!population[i, j])
-                    { dataGridView1[i, j].Value = 0; }
-                    else
-                    { dataGridView1[i, j].Value = 1; }
+                    for (int j = 0; j < populationSize; j++)
+                    {
+                        if (!population[i, j])
+                        { dataGridView1[i, j].Value = 0; }
+                        else
+                        { dataGridView1[i, j].Value = 1; }
+                    }
                 }
             }
             label15.Text = "Chromosome " + (bestSolutionIndex + 1) + ", value: " + bestSolutionValue + ", weight: " + bestSolutionWeight + ", " + bestSolutionQuantity + " items taken.";
@@ -561,6 +578,7 @@ namespace Genetic_Algorythm
             label17.Visible = !label17.Visible;
             label18.Visible = !label18.Visible;
             label19.Visible = !label18.Visible;
+            richTextBox1.Visible = false;
             comboBox1.Visible = !comboBox1.Visible;
             maskedTextBox1.Visible = !maskedTextBox1.Visible;
             maskedTextBox2.Visible = !maskedTextBox2.Visible;
